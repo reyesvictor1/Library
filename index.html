@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <header>
+        <h1>Library</h1>
+        <button type="button">Log In</button>
+    </header>
+    <main>
+        <table>
+            <colgroup>
+                <col class="column-1">
+                <col class="column-2">
+                <col class="column-3">
+                <col class="column-4">
+                <col class="column-5">
+            </colgroup>
+            <tr class="table-header">
+                <th class="book-column">Book</th>
+                <th class="author-column">Author</th>
+                <th class="pages-column">Pages</th>
+                <th class="status-column">Status</th>
+                <th></th>
+            </tr>
+        </table>
+        <button class="add-book-btn" type="button">+ Add Book</button>        
+        <dialog id="add-book-dialog">
+            <form id="add-book-form" action="index.html" method="get">
+                <div>
+                    <label for="book">Book:</label> 
+                    <input type="text" name="book" id="book" required> 
+                </div>
+                <div>
+                    <label for="author">Author:</label> 
+                    <input type="text" name="author" id="author"> 
+                </div>
+                <div>
+                    <label for="pages">Pages:</label>
+                    <input type="number" name="pages" id="pages">
+                </div>
+                <div> 
+                    <input type="checkbox" id="read-status" name="read-status" value="read-status"> 
+                    <label for="read-status">Read</label>
+                </div>
+                <button type="submit" class="add-book-btn" form="add-book-form">Add book</button>
+              </form> 
+        </dialog>
+        <dialog id="delete-book-dialog">
+            <p>Are you sure you want to delete this book?</p>
+            <button type="button" class="yes-btn">Yes</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+        </dialog>
+    </main>
+</body>
+</html>
