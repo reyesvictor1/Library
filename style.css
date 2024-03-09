@@ -74,6 +74,8 @@ main > .add-book-btn {
     width: 10%;
     height: 10%;
     align-self: flex-end;
+    font-size: large;
+    font-weight: bold;
 }
 
 dialog {
@@ -96,4 +98,53 @@ dialog {
     padding: 0;
     margin: 0;
     background-color: red;
+}
+
+dialog {
+    width: max(30%, 500px);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+form, .delete-dialog-contents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+form div {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    gap: 10px;
+}
+
+h2 {
+    align-self: center;
+}
+
+#warning-text {
+    font-size: large;
+    align-self: center;
+}
+
+#book, #author, #pages {
+    flex: 1;
+}
+
+.btns {
+    flex: auto;
+    align-self: flex-end;
+    display: flex;
+    width: 50%;
+    gap: 10px;
+}
+
+.btns button {
+    flex: 1;
+    height: 25px;
+    border-radius: 10px;
+    font-weight: 600;
 }

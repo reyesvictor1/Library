@@ -1,15 +1,17 @@
     const addBookMainBtn = document.querySelector("main > .add-book-btn");
-    const addBookFormBtn = document.querySelector("form > .add-book-btn");
+    const addBookFormBtn = document.querySelector("form .add-book-btn");
     const addBookDialog = document.querySelector("#add-book-dialog");
     const deleteBookDialog = document.querySelector("#delete-book-dialog");
     const yesBtn = document.querySelector(".yes-btn");
-    const cancelBtn = document.querySelector(".cancel-btn");
+    const cancelInsertionBtn = document.querySelector("#cancel-insertion-btn");
+    const cancelDeletionBtn = document.querySelector("#cancel-deletion-btn");
     const form = document.querySelector("form");
     const book = document.querySelector("#book");
     const author = document.querySelector("#author");
     const pages = document.querySelector("#pages");
     const readStatus = document.querySelector("#read-status");
     const table = document.querySelector("table");
+    const warningText = document.querySelector("#warning-text");
     let currentBookIdx = -1;
     let books = [
         {
@@ -69,15 +71,16 @@
         currentBookIdx = books.findIndex((item) => {
             return item.name == bookName;
         });
-        const bookObj = books[currentBookIdx];
         
         // delete button clicked, delete the row of selected book
         if (e.target.classList.contains("delete-btn")) {
-            deleteBookDialog.showModal(); 
+            warningText.textContent = `Are you sure you want to delete "${bookName}" from the library?`;
+            deleteBookDialog.showModal();
         }
         
         // status button clicked, change read status of selected book
         else if (e.target.classList.contains("status-btn")) {
+            const bookObj = books[currentBookIdx];
             bookObj.status = !bookObj.status;
             e.target.textContent = bookObj.status ? "READ" : "NOT READ";
             e.target.style.backgroundColor = bookObj.status ? "lightgreen" : "red";
@@ -85,7 +88,11 @@
     });
     
     yesBtn.addEventListener("click", deleteBook);
-    cancelBtn.addEventListener("click", () => { deleteBookDialog.close(); });
+    cancelInsertionBtn.addEventListener("click", () => {
+        form.reset();
+        addBookDialog.close();
+    });
+    cancelDeletionBtn.addEventListener("click", () => { deleteBookDialog.close(); });
 
     function deleteBook() {
         books.splice(currentBookIdx, 1); // remove book from array
