@@ -13,30 +13,6 @@
     const table = document.querySelector("table");
     const warningText = document.querySelector("#warning-text");
     let currentBookIdx = -1;
-    let books = [
-        {
-            name: "Book A",
-            author: "Author A",
-            pages: 100,
-            status: false
-        },
-        {
-            name: "Book B",
-            author: "Author B",
-            pages: 200,
-            status: true
-        },
-        {
-            name: "Book C",
-            author: "Author C",
-            pages: 300,
-            status: true
-        }
-    ];
-    
-    books.forEach((book) => addBook(book));
-
-    //======================= functions =======================
 
     class Book {
         constructor(name, author, pages, status) {
@@ -46,6 +22,16 @@
             this.status = status;
         }
     }
+
+    const bookA = new Book("To Kill a Mockingbird", "Harper Lee", 281, true);
+    const bookB = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, false);
+    const bookC = new Book("1984", "George Orwell", 328, true);
+    const bookD = new Book("The Catcher in the Rye", "J.D. Salinger", 277, true);
+
+    let books = [bookA, bookB, bookC, bookD];
+    books.forEach((book) => addBook(book));
+
+    //======================= functions =======================
 
     addBookMainBtn.addEventListener("click", () => {
         addBookDialog.showModal();
@@ -113,6 +99,7 @@
         newTableRow.appendChild(tdAuthor);
         
         const tdPages = document.createElement("td");
+        tdPages.classList.add("td-pages");
         tdPages.textContent = book.pages;
         newTableRow.appendChild(tdPages);
         
